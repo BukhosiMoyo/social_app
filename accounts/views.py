@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm
+from django.contrib.auth.decorators import login_required
 
 def user_login(request):
     if request.method == 'POST':
@@ -21,5 +22,13 @@ def user_login(request):
         form = LoginForm()
     context = {'form':form}
     return render(request, 'accounts/login.html', context)
+
+
+@login_required
+def dashboard(request):
+    context={}
+    return render(request, 'accounts/dashboard.html', context)
+
+    
 
 
