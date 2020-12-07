@@ -29,9 +29,26 @@ Login
                                 <div class="card-body p-5">
                                     <!-- Login form-->
                                     <form method="POST">
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <!-- Form Group (first name)-->
+                                                <div class="form-group">
+                                                    <label class="text-gray-600 small" for="firstNameExample"> Username  </label>
+                                                    {{ form.username }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <!-- Form Group (last name)-->
+                                                <div class="form-group">
+                                                    <label class="text-gray-600 small" for="lastNameExample"> Password </label>
+                                                    {{ form.password }}
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
                                         {% csrf_token %}
                                         <!-- Form Group (email address)-->
-                                        {{form.as_p}}
+                                        
                                         <!-- Form Group (forgot password link)-->
                                         <div class="form-group"><a class="small" href="auth-password-social.html">Forgot your password?</a></div>
                                         <!-- Form Group (login box)-->
@@ -40,7 +57,7 @@ Login
                                                 <input class="custom-control-input small" id="customCheck1" type="checkbox" />
                                                 <label class="custom-control-label" for="customCheck1">Remember password</label>
                                             </div>
-                                            <input class="btn btn-primary   " type="submit" value="Login">
+                                            <input class="btn btn-primary btn-sm" type="submit" value="Login">
                                         </div>
                                         
                                     </form>
@@ -49,7 +66,7 @@ Login
                                 <div class="card-body px-5 py-4">
                                     <div class="small text-center">
                                         New user?
-                                        <a href="auth-register-social.html">Create an account!</a>
+                                        <a href="{% url 'register' %}">Create an account!</a>
                                     </div>
                                 </div>
                             </div>

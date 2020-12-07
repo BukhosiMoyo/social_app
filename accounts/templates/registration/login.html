@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-Login R
+Login
 {% endblock title %}
 
 {% block content %}
@@ -28,35 +28,37 @@ Login R
                                 <hr class="my-0" />
                                 <div class="card-body p-5">
                                     <!-- Login form-->
-                                    
-                                    <form method="POST" action="{% url 'login' %}">
+                                    <form method="POST">
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <!-- Form Group (first name)-->
+                                                <div class="form-group">
+                                                    <label class="text-gray-600 small" for="firstNameExample"> Username  </label>
+                                                    {{ form.username }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <!-- Form Group (last name)-->
+                                                <div class="form-group">
+                                                    <label class="text-gray-600 small" for="lastNameExample"> Password </label>
+                                                    {{ form.password }}
+                                                </div>
+                                            </div>
+                                        </div>
                                         {% csrf_token %}
                                         <!-- Form Group (email address)-->
-                                        {{form.as_p}}
                                         <!-- Form Group (forgot password link)-->
-                                        <div class="form-group"><a class="small" href="{% url 'password_reset' %}">Forgot your password?</a></div>
+                                        <div class="form-group"><a class="small" href="auth-password-social.html">Forgot your password?</a></div>
                                         <!-- Form Group (login box)-->
                                         <div class="form-group d-flex align-items-center justify-content-between mb-0">
                                             <div class="custom-control custom-control-solid custom-checkbox">
                                                 <input class="custom-control-input small" id="customCheck1" type="checkbox" />
                                                 <label class="custom-control-label" for="customCheck1">Remember password</label>
                                             </div>
-                                           
-                                            <input class="btn btn-primary   " type="hidden" name="next" value="{{ next }}">
+                                            <input class="btn btn-primary   " type="submit" value="Login">
                                         </div>
-                                         {% if form.errors %}
-
-                                                <p>
-                                                    Your username and password didnt match.
-                                                    Please try again.
-                                                </p>
-                                                
-                                                {% else %}
-
-                                                <p> Please use the following form to login </p>
-                                                
-                                        {% endif %}
-                                         <p><input class="btn btn-primary   " type="submit" value="Login"></p>
                                         
                                     </form>
                                 </div>
@@ -64,7 +66,7 @@ Login R
                                 <div class="card-body px-5 py-4">
                                     <div class="small text-center">
                                         New user?
-                                        <a href="auth-register-social.html">Create an account!</a>
+                                        <a href="{% url 'register' %}">Create an account!</a>
                                     </div>
                                 </div>
                             </div>
